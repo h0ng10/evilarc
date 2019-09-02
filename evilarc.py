@@ -35,7 +35,7 @@ def main(argv=sys.argv):
 								prog = 'evilarc',
 								version = '0.1',
 								usage = '%prog <input file>')
-	p.add_option('--output-file', '-f', dest="out", help="File to output archive to.  Archive type is based off of file extension.  Supported extensions are zip, jar, tar, tar.bz2, tar.gz, and tgz.  Defaults to evil.zip.")
+	p.add_option('--output-file', '-f', dest="out", help="File to output archive to.  Archive type is based off of file extension.  Supported extensions are zip, jar, war, tar, tar.bz2, tar.gz, and tgz.  Defaults to evil.zip.")
 	p.set_default("out", "evil.zip")
 	p.add_option('--depth', '-d', type="int", dest="depth", help="Number directories to traverse. Defaults to 8.")
 	p.set_default("depth", 8)
@@ -68,7 +68,7 @@ def main(argv=sys.argv):
 		wmode = 'a'
 	else:
 		wmode = 'w'
-	if ext == ".zip" or ext == ".jar":
+	if ext == ".zip" or ext == ".jar" or ext == ".war":
 		zf = zipfile.ZipFile(options.out, wmode)
 		zf.write(fname, zpath)
 		zf.close()
